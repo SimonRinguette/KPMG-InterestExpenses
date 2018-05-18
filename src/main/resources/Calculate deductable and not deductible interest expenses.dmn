@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dmn11:definitions xmlns="http://www.trisotech.com/dmn/definitions/_2f245f3b-96aa-4532-b297-b339127be9b8" xmlns:feel="http://www.omg.org/spec/FEEL/20140401" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="DMN Modeler" exporterVersion="6.0.7.2" id="_2f245f3b-96aa-4532-b297-b339127be9b8" name="Calculate deductable and not deductible interest expenses" namespace="http://www.trisotech.com/dmn/definitions/_2f245f3b-96aa-4532-b297-b339127be9b8" triso:logoChoice="Default" xmlns:dmn11="http://www.omg.org/spec/DMN/20151101/dmn.xsd">
+  <dmn11:extensionElements>
+    <tc:testCases>
+      <tc:testCase id="_08cb8b71-480e-433e-9417-7801a88bdd8a" name="2018">
+        <tc:inputNode name="Company Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double">10000000</tc:value>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double">15000000</tc:value>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double">30000000</tc:value>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">300000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">1000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:inputNode name="Group Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">5000000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">9000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:resultNode name="Company Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.3</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="interestExpenses">
+          <tc:expected>
+            <tc:component name="Deductible">
+              <tc:value xsi:type="xsd:double">5000000</tc:value>
+            </tc:component>
+            <tc:component name="notDeductible">
+              <tc:value xsi:type="xsd:double">10000000</tc:value>
+            </tc:component>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Group Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.5555555555555556</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Capped Deductible Expenses">
+          <tc:expected>
+            <tc:value>5000000</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+      </tc:testCase>
+      <tc:testCase id="_73e6a2b5-5e1b-4a32-b73e-662ff4aa77b0" name="2019">
+        <tc:inputNode name="Company Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double">7000000</tc:value>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double">15000000</tc:value>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double">20000000</tc:value>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">350000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">1300000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:inputNode name="Group Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">6000000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">11000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:resultNode name="Company Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.2692307692307692</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="interestExpenses">
+          <tc:expected>
+            <tc:component name="Deductible">
+              <tc:value xsi:type="xsd:double">6000000</tc:value>
+            </tc:component>
+            <tc:component name="notDeductible">
+              <tc:value xsi:type="xsd:double">9000000</tc:value>
+            </tc:component>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Group Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.5454545454545454</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Capped Deductible Expenses">
+          <tc:expected>
+            <tc:value>6000000</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+      </tc:testCase>
+      <tc:testCase id="_fce24663-7646-402b-9ee0-e6411d6770f8" name="2020">
+        <tc:inputNode name="Company Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double">6000000</tc:value>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double">13000000</tc:value>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double">40000000</tc:value>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">350000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">1300000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:inputNode name="Group Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">7000000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">12000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:resultNode name="Company Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.2692307692307692</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="interestExpenses">
+          <tc:expected>
+            <tc:component name="Deductible">
+              <tc:value xsi:type="xsd:double">7000000</tc:value>
+            </tc:component>
+            <tc:component name="notDeductible">
+              <tc:value xsi:type="xsd:double">6000000</tc:value>
+            </tc:component>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Group Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.5833333333333334</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Capped Deductible Expenses">
+          <tc:expected>
+            <tc:value>7000000</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+      </tc:testCase>
+      <tc:testCase id="_9f414c73-ef16-4fe9-9a33-7b4c5a9820c2" name="2021">
+        <tc:inputNode name="Company Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double">2000000</tc:value>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double">16000000</tc:value>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double">20000000</tc:value>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">300000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">1000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:inputNode name="Group Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">9000000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">32000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:resultNode name="Company Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.3</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="interestExpenses">
+          <tc:expected>
+            <tc:component name="Deductible">
+              <tc:value xsi:type="xsd:double">16000000</tc:value>
+            </tc:component>
+            <tc:component name="notDeductible">
+              <tc:value xsi:type="xsd:double">0</tc:value>
+            </tc:component>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Group Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.28125</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Capped Deductible Expenses">
+          <tc:expected>
+            <tc:value>6000000</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+      </tc:testCase>
+      <tc:testCase id="_def897a7-1dc8-4dc4-b047-be3c1eee0186" name="2022">
+        <tc:inputNode name="Company Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double">5000000</tc:value>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double">10000000</tc:value>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double">20000000</tc:value>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">400000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">1100000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:inputNode name="Group Financial Figures">
+          <tc:component name="interestIncome">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="interestExpenses">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="profit">
+            <tc:value xsi:type="xsd:double"/>
+          </tc:component>
+          <tc:component name="equity">
+            <tc:value xsi:type="xsd:double">15000000000</tc:value>
+          </tc:component>
+          <tc:component name="balanceSheetTotal">
+            <tc:value xsi:type="xsd:double">32000000000</tc:value>
+          </tc:component>
+        </tc:inputNode>
+        <tc:resultNode name="Company Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.36363636363636365</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="interestExpenses">
+          <tc:expected>
+            <tc:component name="Deductible">
+              <tc:value xsi:type="xsd:double">5000000</tc:value>
+            </tc:component>
+            <tc:component name="notDeductible">
+              <tc:value xsi:type="xsd:double">5000000</tc:value>
+            </tc:component>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Group Equity Capital Ratio">
+          <tc:expected>
+            <tc:value>0.46875</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+        <tc:resultNode name="Capped Deductible Expenses">
+          <tc:expected>
+            <tc:value>5000000</tc:value>
+          </tc:expected>
+        </tc:resultNode>
+      </tc:testCase>
+    </tc:testCases>
+  </dmn11:extensionElements>
+  <dmn11:itemDefinition label="Financial Figure" name="Financial_Figure">
+    <dmn11:itemComponent id="_64d52e63-b567-4fee-9ae0-edc448dda4f5" name="interestIncome">
+      <dmn11:typeRef>feel:number</dmn11:typeRef>
+    </dmn11:itemComponent>
+    <dmn11:itemComponent id="_6219a619-bc24-411c-b7d9-c7114dea5b49" name="interestExpenses">
+      <dmn11:typeRef>feel:number</dmn11:typeRef>
+    </dmn11:itemComponent>
+    <dmn11:itemComponent id="_b0b299ed-bc50-4a8d-9363-fa3a0b4dc2f0" name="profit">
+      <dmn11:typeRef>feel:number</dmn11:typeRef>
+    </dmn11:itemComponent>
+    <dmn11:itemComponent id="_3eac0000-7e8e-4462-96de-e727cf66020c" name="equity">
+      <dmn11:typeRef>feel:number</dmn11:typeRef>
+    </dmn11:itemComponent>
+    <dmn11:itemComponent id="_fc06ef83-96c7-452b-afae-207ee88f8ef1" name="balanceSheetTotal">
+      <dmn11:typeRef>feel:number</dmn11:typeRef>
+    </dmn11:itemComponent>
+  </dmn11:itemDefinition>
+  <dmn11:inputData id="_9ddc6684-7cb5-4803-96d9-c86de73e9224" name="Company Financial Figures">
+    <dmn11:variable id="_0ed2d56c-5946-4d04-87fd-256d1a1e578c" name="Company Financial Figures" typeRef="Financial_Figure"/>
+  </dmn11:inputData>
+  <dmn11:inputData id="_a0be8dbf-ec06-441f-8827-7094216312f6" name="Group Financial Figures">
+    <dmn11:variable id="_bf32e13f-b5bb-4484-85de-2af2c6608dfb" name="Group Financial Figures" typeRef="Financial_Figure"/>
+  </dmn11:inputData>
+  <dmn11:decision id="_78c8b106-e1ff-4ddb-bf2b-619759129024" name="Capped Deductible Expenses">
+    <dmn11:variable id="_fc4d7160-038b-414e-8b22-db5c27455a26" name="Capped Deductible Expenses"/>
+    <dmn11:informationRequirement>
+      <dmn11:requiredInput href="#_9ddc6684-7cb5-4803-96d9-c86de73e9224"/>
+    </dmn11:informationRequirement>
+    <dmn11:context id="_95c82db8-b5f9-4df8-9e83-1e18f5c8a979">
+      <dmn11:contextEntry>
+        <dmn11:variable id="_ec8c0093-bc5c-4bea-898d-728c8f0f9433" name="interest delta"/>
+        <dmn11:literalExpression id="_c28fb400-2e32-4d13-8a4b-09f1eed69e8b">
+          <dmn11:text>Company Financial Figures.interestExpenses - Company Financial Figures.interestIncome</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:contextEntry>
+      <dmn11:contextEntry>
+        <dmn11:variable id="_36a4fd80-d719-49b5-8994-12231f432cb4" name="positive interest delta"/>
+        <dmn11:literalExpression id="_0af1640c-a0cb-4cf8-8060-eb28674206e6">
+          <dmn11:text>max(interest delta, 0) // if interest delta is negative, the deductible is 0</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:contextEntry>
+      <dmn11:contextEntry>
+        <dmn11:variable id="_881fa226-104d-4ac6-b7a6-39247e77f092" name="maximum deductible"/>
+        <dmn11:literalExpression id="_36ec0715-d11e-4a7c-a4b4-d1b766568792">
+          <dmn11:text>Company Financial Figures.profit * 0.3 // max of 30% of profits</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:contextEntry>
+      <dmn11:contextEntry>
+        <dmn11:literalExpression id="_f6d65bf1-3268-4888-bb6f-c425801ebcb3">
+          <dmn11:text>min(positive interest delta,maximum deductible)</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:contextEntry>
+    </dmn11:context>
+  </dmn11:decision>
+  <dmn11:decision id="_00c951d8-9580-4d4b-aa41-03dee02a2ccd" name="interestExpenses">
+    <dmn11:variable id="_ce6f34e4-78f2-4b9c-9444-8f0d4b3b9304" name="interestExpenses"/>
+    <dmn11:informationRequirement>
+      <dmn11:requiredDecision href="#_72350455-c24c-409c-b9fd-44f8e4b677cf"/>
+    </dmn11:informationRequirement>
+    <dmn11:informationRequirement>
+      <dmn11:requiredDecision href="#_337c2b5c-8b71-4d99-854e-f604839946fe"/>
+    </dmn11:informationRequirement>
+    <dmn11:informationRequirement>
+      <dmn11:requiredDecision href="#_78c8b106-e1ff-4ddb-bf2b-619759129024"/>
+    </dmn11:informationRequirement>
+    <dmn11:informationRequirement>
+      <dmn11:requiredInput href="#_9ddc6684-7cb5-4803-96d9-c86de73e9224"/>
+    </dmn11:informationRequirement>
+    <dmn11:decisionTable hitPolicy="FIRST" id="_b05f378a-9288-426e-8db6-7661a431a314" outputLabel="interestExpenses">
+      <dmn11:input id="_92834cf6-7d76-43e9-84a0-1e996cc470c6">
+        <dmn11:inputExpression typeRef="feel:number">
+          <dmn11:text>Company Financial Figures.interestExpenses</dmn11:text>
+        </dmn11:inputExpression>
+      </dmn11:input>
+      <dmn11:input id="_db92a9dc-1a18-45ac-ac10-c197309aea84">
+        <dmn11:inputExpression>
+          <dmn11:text>Company Equity Capital Ratio</dmn11:text>
+        </dmn11:inputExpression>
+      </dmn11:input>
+      <dmn11:output id="_3e7de53a-fd09-4745-8ea2-ac2e8f19f30b" name="Deductible" typeRef="feel:number"/>
+      <dmn11:output id="_cdd1c852-4e19-4644-9778-c6bedcc0bcab" name="notDeductible" typeRef="feel:number"/>
+      <dmn11:rule id="_c45f8292-e701-49a3-8b3e-6ab2fcd89c6d">
+        <dmn11:description>Exception 1</dmn11:description>
+        <dmn11:inputEntry id="_a2fd60a0-f6db-4b3a-bbd5-2b03ebcc23e7">
+          <dmn11:text>&lt; 3000000</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:inputEntry id="_7fe904bd-af2a-4f28-bd29-620ceb7e6875">
+          <dmn11:text>-</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:outputEntry id="_49ce3883-c95f-4a66-bcb9-63db975ba5ae">
+          <dmn11:text>Company Financial Figures.interestExpenses</dmn11:text>
+        </dmn11:outputEntry>
+        <dmn11:outputEntry id="_881b7fcd-8c69-4fb1-8581-adfd625d4389">
+          <dmn11:text>0</dmn11:text>
+        </dmn11:outputEntry>
+      </dmn11:rule>
+      <dmn11:rule id="_fe7dc6b9-2c9d-44f8-b536-3e223cd2f1b8">
+        <dmn11:description>Exception 2</dmn11:description>
+        <dmn11:inputEntry id="_937b75ca-b8c7-47ec-872a-5acb5e0f8d33">
+          <dmn11:text>-</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:inputEntry id="_5605c07d-9059-46b9-84c9-150f19d6da12">
+          <dmn11:text>&gt;= Group Equity Capital Ratio</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:outputEntry id="_7777f954-a898-4b9a-b157-51e6f443d018">
+          <dmn11:text>Company Financial Figures.interestExpenses</dmn11:text>
+        </dmn11:outputEntry>
+        <dmn11:outputEntry id="_339090cf-9db0-443a-a221-0ad8dac082e8">
+          <dmn11:text>0</dmn11:text>
+        </dmn11:outputEntry>
+      </dmn11:rule>
+      <dmn11:rule id="_f26c13f3-638d-4b5b-bd41-93c54c462b5a">
+        <dmn11:description>Normal case</dmn11:description>
+        <dmn11:inputEntry id="_58f42107-e652-45ea-8fb9-6d6093cb81ce">
+          <dmn11:text>-</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:inputEntry id="_3e257f02-f7f8-4025-8264-cb9351ba89b3">
+          <dmn11:text>-</dmn11:text>
+        </dmn11:inputEntry>
+        <dmn11:outputEntry id="_b74a25ab-9f80-450a-8899-e2f2e37d45d4">
+          <dmn11:text>Capped Deductible Expenses</dmn11:text>
+        </dmn11:outputEntry>
+        <dmn11:outputEntry id="_f312f0b5-3d41-41b2-85fc-4b6245b8d690">
+          <dmn11:text>Company Financial Figures.interestExpenses - Capped Deductible Expenses</dmn11:text>
+        </dmn11:outputEntry>
+      </dmn11:rule>
+    </dmn11:decisionTable>
+  </dmn11:decision>
+  <dmn11:businessKnowledgeModel id="_a6e49700-e534-419e-ae48-0d573dd2d4c7" name="Equity Capital Ratio">
+    <dmn11:encapsulatedLogic xmlns:drools="http://www.drools.org/kie/dmn/1.1" drools:kind="F" id="_f30bb709-2858-40b3-9bf6-d4700901d453">
+      <dmn11:formalParameter id="_0e7ca672-9f2b-4fca-b4f3-5d62e1a3b227" name="equity" typeRef="feel:number"/>
+      <dmn11:formalParameter id="_f27a13a8-a51d-4a2f-9ab7-b7edc5ce411d" name="balanceSheetTotal" typeRef="feel:number"/>
+      <dmn11:literalExpression id="_abc6b209-298b-443c-9dd9-bdbf809b14ba">
+        <dmn11:text>equity / balanceSheetTotal</dmn11:text>
+      </dmn11:literalExpression>
+    </dmn11:encapsulatedLogic>
+    <dmn11:variable id="_8d1f2fcc-9d15-4aa7-bb84-25da33d338e3" name="Equity Capital Ratio"/>
+  </dmn11:businessKnowledgeModel>
+  <dmn11:decision id="_72350455-c24c-409c-b9fd-44f8e4b677cf" name="Company Equity Capital Ratio">
+    <dmn11:variable id="_52e786ca-3db4-4f6e-bd98-91c25a72e8b2" name="Company Equity Capital Ratio"/>
+    <dmn11:informationRequirement>
+      <dmn11:requiredInput href="#_9ddc6684-7cb5-4803-96d9-c86de73e9224"/>
+    </dmn11:informationRequirement>
+    <dmn11:knowledgeRequirement>
+      <dmn11:requiredKnowledge href="#_a6e49700-e534-419e-ae48-0d573dd2d4c7"/>
+    </dmn11:knowledgeRequirement>
+    <dmn11:invocation id="_849291cd-0077-4f3b-8f64-35b1363a3632">
+      <dmn11:literalExpression id="literal__849291cd-0077-4f3b-8f64-35b1363a3632">
+        <dmn11:text>Equity Capital Ratio</dmn11:text>
+      </dmn11:literalExpression>
+      <dmn11:binding>
+        <dmn11:parameter id="_5ac8b4e8-251d-4143-8075-8f905e18b29d" name="equity"/>
+        <dmn11:literalExpression id="_eaa25b5c-0013-40ee-b4d5-dd9d1514da7e">
+          <dmn11:text>Company Financial Figures.equity</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:binding>
+      <dmn11:binding>
+        <dmn11:parameter id="_e73da09b-8b7a-4e39-8514-8a9e4941257f" name="balanceSheetTotal"/>
+        <dmn11:literalExpression id="_49f44ad4-e9f6-46b3-a3cf-5af399c1ee3f">
+          <dmn11:text>Company Financial Figures.balanceSheetTotal</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:binding>
+    </dmn11:invocation>
+  </dmn11:decision>
+  <dmn11:decision id="_337c2b5c-8b71-4d99-854e-f604839946fe" name="Group Equity Capital Ratio">
+    <dmn11:variable id="_3ac50278-c2ad-4147-97fc-0a062517b477" name="Group Equity Capital Ratio"/>
+    <dmn11:informationRequirement>
+      <dmn11:requiredInput href="#_a0be8dbf-ec06-441f-8827-7094216312f6"/>
+    </dmn11:informationRequirement>
+    <dmn11:knowledgeRequirement>
+      <dmn11:requiredKnowledge href="#_a6e49700-e534-419e-ae48-0d573dd2d4c7"/>
+    </dmn11:knowledgeRequirement>
+    <dmn11:invocation id="_5d131e2a-3757-4cf0-9364-a96598923fe7">
+      <dmn11:literalExpression id="literal__5d131e2a-3757-4cf0-9364-a96598923fe7">
+        <dmn11:text>Equity Capital Ratio</dmn11:text>
+      </dmn11:literalExpression>
+      <dmn11:binding>
+        <dmn11:parameter id="_9a079967-d0b4-4aa9-a39d-eff8b7d3f668" name="equity"/>
+        <dmn11:literalExpression id="_9876575d-b4f9-4858-a244-a545c0da0606">
+          <dmn11:text>Group Financial Figures.equity</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:binding>
+      <dmn11:binding>
+        <dmn11:parameter id="_dd2542c6-0f0a-4b58-b174-09248c33652e" name="balanceSheetTotal"/>
+        <dmn11:literalExpression id="_371602b7-86c0-45c4-bc96-d6e1b10ed73f">
+          <dmn11:text>Group Financial Figures.balanceSheetTotal</dmn11:text>
+        </dmn11:literalExpression>
+      </dmn11:binding>
+    </dmn11:invocation>
+  </dmn11:decision>
+</dmn11:definitions>
